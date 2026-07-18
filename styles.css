@@ -219,17 +219,17 @@ input:focus-visible{outline:2px solid var(--maroon); outline-offset:1px;}
 .btn-primary{
   background:var(--maroon);
   color:var(--text-light);
-  box-shadow:0 12px 24px -12px rgb(0, 0, 0);
+  box-shadow:0 12px 24px -12px rgba(122,36,54,0.55);
 }
 .btn-primary:hover{background:var(--maroon-deep);}
 .btn-primary:active{transform:translateY(1px);}
 .btn-primary:disabled{opacity:0.6; cursor:not-allowed; box-shadow:none;}
 .btn-ghost{
-  background:#f50033;
-  color:rgb(253, 253, 253);
-  border:1.5px solid rgb(255, 0, 0);
+  background:transparent;
+  color:var(--maroon);
+  border:1.5px solid rgba(122,36,54,0.3);
 }
-.btn-ghost:hover{background:rgb(247, 245, 245);}
+.btn-ghost:hover{background:rgba(122,36,54,0.06);}
 
 .divider{
   display:flex; align-items:center; gap:12px;
