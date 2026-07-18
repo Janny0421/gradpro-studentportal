@@ -14,8 +14,8 @@
   --ink-soft:#ffffff;
   --parchment:#F6F1E4;
   --parchment-dim:#EDE6D3;
-  --maroon:#7A2436;
-  --maroon-deep:#5C1A28;
+  --maroon:#C41E3A;
+  --maroon-deep:#9A1730;
   --gold:#C9A227;
   --gold-light:#E8CD75;
   --text-dark:#241F1A;
@@ -122,7 +122,7 @@ body{
   margin:0;
 }
 .headline em{
-  font-style:italic; color:var(--gold-light); font-weight:500;
+  font-style:italic; color:rgb(0, 0, 0); font-weight:500;
 }
 .subcopy{
   font-size:15px;
@@ -219,17 +219,17 @@ input:focus-visible{outline:2px solid var(--maroon); outline-offset:1px;}
 .btn-primary{
   background:var(--maroon);
   color:var(--text-light);
-  box-shadow:0 12px 24px -12px rgba(122,36,54,0.55);
+  box-shadow:0 12px 24px -12px rgb(0, 0, 0);
 }
 .btn-primary:hover{background:var(--maroon-deep);}
 .btn-primary:active{transform:translateY(1px);}
 .btn-primary:disabled{opacity:0.6; cursor:not-allowed; box-shadow:none;}
 .btn-ghost{
-  background:transparent;
-  color:var(--maroon);
-  border:1.5px solid rgba(122,36,54,0.3);
+  background:#f50033;
+  color:red;
+  border:1.5px solid rgb(255, 0, 0);
 }
-.btn-ghost:hover{background:rgba(122,36,54,0.06);}
+.btn-ghost:hover{background:rgb(15, 15, 15);}
 
 .divider{
   display:flex; align-items:center; gap:12px;
