@@ -229,7 +229,7 @@ input:focus-visible{outline:2px solid var(--maroon); outline-offset:1px;}
   color:rgb(253, 253, 253);
   border:1.5px solid rgb(255, 0, 0);
 }
-.btn-ghost:hover{background:rgb(15, 15, 15);}
+.btn-ghost:hover{background:rgb(247, 245, 245);}
 
 .divider{
   display:flex; align-items:center; gap:12px;
@@ -270,7 +270,7 @@ input:focus-visible{outline:2px solid var(--maroon); outline-offset:1px;}
 .dash-topbar{
   display:flex; align-items:center; justify-content:space-between;
   padding:20px 40px;
-  background:var(--ink);
+  background: red;
   color:var(--text-light);
 }
 .dash-topbar .brand-name{font-size:17px;}
