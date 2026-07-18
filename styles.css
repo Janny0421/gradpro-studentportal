@@ -10,16 +10,16 @@
      states so it reads as informative rather than decorative.
    ============================================================== */
 :root{
-  --ink:#be3535;
+  --ink:#d32f2f;
   --ink-soft:#ffffff;
   --parchment:#F6F1E4;
   --parchment-dim:#EDE6D3;
   --maroon:#ff0909;
   --maroon-deep:#ff0909;
-  --gold:#C9A227;
-  --gold-light:#E8CD75;
-  --text-dark:#241F1A;
-  --text-muted:#6B6255;
+  --gold:#000000;
+  --gold-light:#050505;
+  --text-dark:#050505;
+  --text-muted:#000000;
   --text-light:#F6F1E4;
   --success:#2F6D4C;
   --danger:#B5432A;
@@ -138,15 +138,15 @@ body{
 }
 .ribbon-step{
   display:flex; align-items:center; gap:10px;
-  font-size:13px; color:rgba(246,241,228,0.6);
+  font-size:13px; color:rgba(0, 0, 0, 0.6);
 }
 .ribbon-step .dot{
   width:7px; height:7px; border-radius:50%;
-  background:rgba(246,241,228,0.28);
+  background:rgba(5, 5, 5, 0.28);
   flex:none;
 }
-.ribbon-step.active .dot{background:var(--gold);}
-.ribbon-step.active{color:var(--text-light);}
+.ribbon-step.active .dot{background:red;}
+.ribbon-step.active{color:black;}
 .ribbon-step.done .dot{background:var(--success);}
 
 /* ---------- Right: parchment form ---------- */
@@ -226,7 +226,7 @@ input:focus-visible{outline:2px solid var(--maroon); outline-offset:1px;}
 .btn-primary:disabled{opacity:0.6; cursor:not-allowed; box-shadow:none;}
 .btn-ghost{
   background:#f50033;
-  color:red;
+  color:rgb(253, 253, 253);
   border:1.5px solid rgb(255, 0, 0);
 }
 .btn-ghost:hover{background:rgb(15, 15, 15);}
