@@ -341,7 +341,6 @@ const EDITABLE_FIELDS = [
   { key: 'last_name', label: 'Last name', type: 'text' },
   { key: 'middle_initial', label: 'Middle initial', type: 'text' },
   { key: 'suffix', label: 'Suffix', type: 'text' },
-  { key: 'student_number', label: 'Student number', type: 'text' },
   { key: 'contact_number', label: 'Contact number', type: 'text' },
   { key: 'batch_year', label: 'Batch year', type: 'number' },
 ];
@@ -476,7 +475,6 @@ function renderProfileGrid(){
       ['Last name', titleCase(currentProfile.last_name) || 'Not set yet'],
       ['Middle initial', titleCase(currentProfile.middle_initial) || 'Not set yet'],
       ['Suffix', currentProfile.suffix || 'Not set yet'],
-      ['Student number', currentProfile.student_number || 'Not set yet'],
       ['Education level', level ? level.label : 'Not set yet'],
       ['School', school ? school.name : 'Not set yet'],
       [courseWrapLabel(level && level.code), course ? course.name : 'Not set yet'],
@@ -519,10 +517,6 @@ function renderProfileGrid(){
     <div class="profile-field">
       <label class="eyebrow" for="edit_suffix">Suffix</label>
       <select id="edit_suffix">${suffixOptionsHtml(currentProfile.suffix)}</select>
-    </div>
-    <div class="profile-field">
-      <label class="eyebrow" for="edit_student_number">Student number</label>
-      ${fieldControl(EDITABLE_FIELDS[4])}
     </div>
     <div class="profile-field">
       <label class="eyebrow" for="edit_education_level_id">Education level</label>
