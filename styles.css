@@ -10,11 +10,11 @@
      states so it reads as informative rather than decorative.
    ============================================================== */
 :root{
-  --ink:#cc3838cb;
+  --ink:#B22222;
   --ink-soft:#ffffff;
   --parchment:#F6F1E4;
   --parchment-dim:#EDE6D3;
-  --maroon:#ff0909;
+  --maroon:#B22222;
   --maroon-deep:#0f0f0f;
   --gold:#000000;
   --gold-light:#050505;
@@ -22,7 +22,7 @@
   --text-muted:#000000;
   --text-light:#F6F1E4;
   --success:#2F6D4C;
-  --danger:#B5432A;
+  --danger:#B22222;
   --radius:14px;
   --shadow-card: 0 30px 60px -25px rgba(20,25,43,0.35);
 }
@@ -54,9 +54,7 @@ body{
 
 /* ---------- Left: ink panel ---------- */
 .panel-left{
-  background:
-    radial-gradient(circle at 15% 20%, rgba(201,162,39,0.10), transparent 45%),
-    linear-gradient(180deg, var(--ink) 0%, var(--ink-soft) 100%);
+  background: linear-gradient(180deg, var(--ink) 0%, var(--ink-soft) 100%);
   color:var(--text-light);
   padding:64px 56px;
   display:flex;
@@ -64,14 +62,6 @@ body{
   justify-content:space-between;
   position:relative;
   overflow:hidden;
-}
-.panel-left::before{
-  content:"";
-  position:absolute; inset:0;
-  background-image: repeating-linear-gradient(
-    transparent, transparent 47px, rgba(201,162,39,0.06) 48px
-  );
-  pointer-events:none;
 }
 @media (max-width: 880px){
   .panel-left{padding:36px 28px 48px;}
@@ -145,7 +135,7 @@ body{
   background:rgba(5, 5, 5, 0.28);
   flex:none;
 }
-.ribbon-step.active .dot{background:red;}
+.ribbon-step.active .dot{background:#B22222;}
 .ribbon-step.active{color:black;}
 .ribbon-step.done .dot{background:var(--success);}
 
@@ -260,7 +250,7 @@ input:focus-visible{outline:2px solid var(--maroon); outline-offset:1px;}
   font-family:'IBM Plex Mono', monospace;
   font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase;
   padding:5px 10px; border-radius:999px;
-  background:rgba(201,162,39,0.15); color:#8A6D10;
+  background:#F1EFE8; color:#444441;
   margin-bottom:18px;
 }
 .status-tag.verified{background:rgba(47,109,76,0.14); color:var(--success);}
@@ -270,10 +260,10 @@ input:focus-visible{outline:2px solid var(--maroon); outline-offset:1px;}
 .dash-topbar{
   display:flex; align-items:center; justify-content:space-between;
   padding:20px 40px;
-  background: red;
+  background: #B22222;
   color:var(--text-light);
 }
-.dash-topbar .brand-name{font-size:17px;}
+.dash-topbar .brand-name{font-size:24px;}
 .dash-body{max-width:960px; margin:0 auto; padding:48px 32px;}
 .dash-hello .eyebrow{color:var(--maroon);}
 .dash-hello h1{
@@ -282,7 +272,7 @@ input:focus-visible{outline:2px solid var(--maroon); outline-offset:1px;}
 .dash-hello p{color:var(--text-muted); margin:0 0 36px;}
 
 .tabs-bar{position:relative;}
-.tabs{display:flex; gap:6px; border-bottom:1.5px solid #DED4B8; margin-bottom:28px; flex-wrap:wrap;}
+.tabs{display:flex; gap:6px; border-bottom:1.5px solid #070707; margin-bottom:28px; flex-wrap:wrap;}
 .tab{
   font-family:'IBM Plex Mono', monospace;
   font-size:12px; letter-spacing:0.05em; text-transform:uppercase; font-weight:600;
@@ -393,8 +383,8 @@ input:focus-visible{outline:2px solid var(--maroon); outline-offset:1px;}
 
 .signout{
   font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.05em;
-  text-transform:uppercase; color:rgba(246,241,228,0.75);
-  background:none; border:1px solid rgba(246,241,228,0.3); border-radius:999px;
+  text-transform:uppercase; color:rgba(3, 3, 3, 0.75);
+  background:none; border:1px solid rgba(14, 13, 13, 0.3); border-radius:999px;
   padding:8px 16px; cursor:pointer;
 }
 .signout:hover{background:rgba(246,241,228,0.08); color:var(--text-light);}
