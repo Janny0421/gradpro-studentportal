@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grad Pro Studios — Student Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<!-- <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback&render=explicit" async defer></script> -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- AUTH SHELL: login / register / verify-gate                    -->
+<!-- ============================================================ -->
+<div class="shell" id="authShell">
+  <div class="panel-left">
+
+    <!-- BRAND LOGO -->
+    <div class="brand-row">
+      <img src="GPS.png" alt="Grad Pro Studios Logo" class="brand-logo">
+    </div>
+
+    <div class="seal-wrap">
+
+      <h1 class="headline">
+        Graduation na?
+        <em>Grad Pro Na!</em>
+      </h1>
+
+      <p class="subcopy">
+        Professional graduation pictorials and yearbook photography crafted
+        for students who've earned their spotlight. Beautiful, timeless,
+        unforgettable.
+      </p>
+    </div>
+
+    <div class="ribbon-steps">
+      <div class="ribbon-step" id="stepAccount">
+        <span class="dot"></span>Create your account
+      </div>
+
+      <div class="ribbon-step" id="stepVerify">
+        <span class="dot"></span>Verify your email
+      </div>
+
+      <div class="ribbon-step" id="stepPortal">
+        <span class="dot"></span>Manage your student portal
+      </div>
+    </div>
+
+  </div>
+
+  <div class="panel-right">
+
+    <!-- ---------------- LOGIN VIEW ---------------- -->
+    <div class="card" id="view-login">
+      <div class="eyebrow card-eyebrow">Student Portal</div>
+      <h2 class="card-title">Log in</h2>
+      <p class="card-sub">New here? <a href="#" id="goToRegister">Register for an account</a> instead.</p>
+
+      <div id="loginAlert"></div>
+
+      <form id="loginForm">
+        <div class="field">
+          <label for="loginEmail">Email address</label>
+          <input type="email" id="loginEmail" required autocomplete="email" placeholder="you@example.com">
+        </div>
+        <div class="field">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" required autocomplete="current-password" placeholder="••••••••">
+        </div>
+        <div class="field" id="turnstileLogin"></div>
+        <button type="submit" class="btn btn-primary" id="loginSubmit">Log in</button>
+      </form>
+    </div>
+
+    <!-- ---------------- REGISTER VIEW ---------------- -->
+    <div class="card hidden" id="view-register">
+      <div class="eyebrow card-eyebrow">Student Portal</div>
+      <h2 class="card-title">Register</h2>
+      <p class="card-sub">Already registered? <a href="#" id="goToLogin">Log in</a> instead.</p>
+
+      <div id="registerAlert"></div>
+
+      <form id="registerForm">
+        <div class="field field-row">
+          <div>
+            <label for="regFirstName">First name</label>
+            <input type="text" id="regFirstName" required autocomplete="given-name" placeholder="Maria">
+          </div>
+          <div>
+            <label for="regLastName">Last name</label>
+            <input type="text" id="regLastName" required autocomplete="family-name" placeholder="Santos">
+          </div>
+        </div>
+        <div class="field">
+          <label for="regEmail">Email address</label>
+          <input type="email" id="regEmail" required autocomplete="email" placeholder="you@example.com">
+        </div>
+        <div class="field">
+          <label for="regPassword">Password</label>
+          <input type="password" id="regPassword" required autocomplete="new-password" minlength="8" placeholder="At least 8 characters">
+        </div>
+        <div class="field">
+          <label for="regPasswordConfirm">Confirm password</label>
+          <input type="password" id="regPasswordConfirm" required autocomplete="new-password" minlength="8" placeholder="Re-enter your password">
+        </div>
+        <div class="field" id="turnstileRegister"></div>
+        <button type="submit" class="btn btn-primary" id="registerSubmit">Create account</button>
+      </form>
+    </div>
+
+    <!-- ---------------- VERIFY-EMAIL GATE ---------------- -->
+    <div class="card hidden" id="view-verify">
+      <div class="status-tag" id="verifyStatusTag">Awaiting verification</div>
+      <h2 class="card-title">Check your inbox</h2>
+      <p class="card-sub" id="verifyCopy">
+        We sent a 6-digit verification code to <strong id="verifyEmailShown">your email</strong>. Enter it below to unlock your dashboard.
+      </p>
+
+      <div id="verifyAlert"></div>
+
+      <form id="otpForm">
+        <div class="field">
+          <label for="otpCode">Verification code</label>
+          <input type="text" id="otpCode" required inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="123456" autocomplete="one-time-code">
+        </div>
+        <button type="submit" class="btn btn-primary" id="otpSubmit">Verify code</button>
+      </form>
+
+      <div class="field" id="turnstileResend"></div>
+      <button class="btn btn-ghost" id="resendBtn" style="margin-top:12px; margin-bottom:12px;">Resend verification code</button>
+      <button class="btn btn-ghost" id="backToLoginFromVerify">Back to login</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- DASHBOARD (unlocked only after email verification)             -->
+<!-- ============================================================ -->
+<div class="dash" id="dashboard">
+  <div class="dash-topbar">
+    <span class="brand-name">Grad Pro <b style="color:rgb(0, 0, 0);">Studios</b></span>
+    <button class="signout" id="signOutBtn">Sign out</button>
+  </div>
+
+  <div class="dash-body">
+    <div class="dash-hello">
+      <span class="eyebrow">Student Portal</span>
+      <h1 id="dashGreeting">Welcome back</h1>
+      <p id="dashSub">Here's everything tied to your registration.</p>
+    </div>
+
+    <div class="tabs-bar">
+      <button class="tabs-toggle" id="tabsToggle" aria-label="Toggle sections menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="tabs" id="tabsList">
+        <button class="tab active" data-tab="tab-registration">Registration Details</button>
+        <button class="tab" data-tab="tab-appointments">Appointments</button>
+        <button class="tab" data-tab="tab-images">Uploaded Images</button>
+        <button class="tab" data-tab="tab-graduation">Graduation Records</button>
+      </div>
+    </div>
+
+    <div class="tab-panel active" id="tab-registration">
+      <div class="stub-card">
+        <div class="stub-card-header">
+          <div>
+            <h3>Your details</h3>
+          </div>
+          <button class="btn-ghost btn-inline" id="editProfileBtn">Edit Details</button>
+        </div>
+        <div id="profileAlert"></div>
+        <div class="profile-grid" id="profileGrid">
+          <!-- populated by JS -->
+        </div>
+        <div class="profile-edit-actions hidden" id="profileEditActions">
+          <button class="btn btn-primary" id="saveProfileBtn" type="button">Save changes</button>
+          <button class="btn btn-ghost" id="cancelProfileBtn" type="button">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-appointments">
+      <div class="stub-card">
+        <h3>Appointments</h3>
+        <p>Photoshoot and gown-fitting schedules will appear here once appointment booking goes live.</p>
+        <div class="stub-empty">No appointments scheduled yet.</div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-images">
+      <div class="stub-card">
+        <h3>Uploaded images</h3>
+        <p>Your school ID, raw shoot photos, and final edited images will be listed here once uploads open.</p>
+        <div class="stub-empty">No images uploaded yet.</div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-graduation">
+      <div class="stub-card">
+        <h3>Graduation records</h3>
+        <p>Degree program, ceremony date, honors, and gown details will appear here closer to graduation.</p>
+        <div class="stub-empty">No graduation record on file yet.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
