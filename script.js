@@ -1,7 +1,3 @@
-/* ==============================================================
-   SUPABASE CONFIG — replace with your project's values.
-   Project Settings → API in the Supabase dashboard.
-   ============================================================== */
 const SUPABASE_URL = "https://goionmhlyaxtikapljes.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_m-RLzMQ-Qp23vK27JGTFHg_cX2skEmz";
 
@@ -110,10 +106,11 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
   }
 
   const captchaToken = getTurnstileToken('register');
-  if (!captchaToken) {
-    alertBox('registerAlert', 'Palihug i-completo una ang security check sa ubos.', 'error');
-    return;
-  }
+  // TEMP: Turnstile disabled for local testing — re-enable before going live.
+  // if (!captchaToken) {
+  //   alertBox('registerAlert', 'Please complete the security verification below before continuing', 'error');
+  //   return;
+  // }
 
   const btn = document.getElementById('registerSubmit');
   btn.disabled = true;
@@ -151,10 +148,11 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   const password = document.getElementById('loginPassword').value;
 
   const captchaToken = getTurnstileToken('login');
-  if (!captchaToken) {
-    alertBox('loginAlert', 'Palihug i-completo una ang security check sa ubos.', 'error');
-    return;
-  }
+  // TEMP: Turnstile disabled for local testing — re-enable before going live.
+  // if (!captchaToken) {
+  //   alertBox('registerAlert', 'Please complete the security verification below before continuing', 'error');
+  //   return;
+  // }
 
   const btn = document.getElementById('loginSubmit');
   btn.disabled = true;
@@ -214,10 +212,11 @@ document.getElementById('resendBtn').addEventListener('click', async () => {
   const btn = document.getElementById('resendBtn');
 
   const captchaToken = getTurnstileToken('resend');
-  if (!captchaToken) {
-    alertBox('verifyAlert', 'Palihug i-completo una ang security check sa ubos.', 'error');
-    return;
-  }
+  // TEMP: Turnstile disabled for local testing — re-enable before going live.
+  // if (!captchaToken) {
+  //   alertBox('registerAlert', 'Please complete the security verification below before continuing', 'error');
+  //   return;
+  // }
 
   btn.disabled = true;
   btn.textContent = 'Sending…';
